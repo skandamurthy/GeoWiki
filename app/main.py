@@ -1,11 +1,12 @@
-import datastore
 import uvicorn
 from fastapi import FastAPI
 
+from app import datastore
 from routes import city_router
 from routes import continent_router
 from routes import country_router
 from wiki.models import Base
+
 # Create fastAPI app
 app = FastAPI()
 

@@ -22,7 +22,8 @@ async def create_entry(request: Request, data: ContinentClass):
                 )
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
 
 
@@ -37,7 +38,8 @@ async def get_all_entries(request: Request):
                 return ans
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
 
 
@@ -55,7 +57,8 @@ async def update_entry(request: Request, data: ContinentClass, continent_id: int
                 )
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
 
 
@@ -68,7 +71,8 @@ async def delete_entry(request: Request, continent_id: int):
         try:
             await continent_dal.delete_entry(continent_id)
             return JSONResponse(
-                status_code=200, content={"message": "Continent Entry Deleted"},
+                status_code=200,
+                content={"message": "Continent Entry Deleted"},
             )
         except Exception:
             return JSONResponse(status_code=422, content={"message": "Function Failed"})

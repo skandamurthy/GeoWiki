@@ -45,7 +45,10 @@ class CountryDAL:
         return res.scalar()
 
     async def update_entry(
-        self, data: CountryClass, continent_id: int, country_id=None,
+        self,
+        data: CountryClass,
+        continent_id: int,
+        country_id=None,
     ):
         res = update(Country).where(Country.id == country_id)
         valid_flag = await country_validator(

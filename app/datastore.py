@@ -14,13 +14,15 @@ async def get_datastore(return_key="session"):
         drivername="postgresql+asyncpg",
         username="postgres",
         password="1234",
-        host="localhost",
+        host="db",
         port=5432,
         database="postgres",
     )
     engine = create_async_engine(db_URL, future=True, echo=False, pool_pre_ping=True)
     async_session = sessionmaker(
-        bind=engine, expire_on_commit=False, class_=AsyncSession,
+        bind=engine,
+        expire_on_commit=False,
+        class_=AsyncSession,
     )
     if return_key == "session":
         return async_session

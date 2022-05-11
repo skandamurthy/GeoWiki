@@ -22,10 +22,14 @@ async def create_entry(request: Request, data: CountryClass, continent_id: int):
                         content={"id": id_, "message": "Added Continent Entry"},
                     )
                 else:
-                    return JSONResponse(status_code=422, content={"message": "Please check the Population"})
+                    return JSONResponse(
+                        status_code=422,
+                        content={"message": "Please check the Population"},
+                    )
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
 
 
@@ -39,7 +43,8 @@ async def get_all_entries(request: Request, continent_id: int):
                 return await country_dal.get_all_entries(continent_id)
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
 
 
@@ -57,11 +62,13 @@ async def update_entry(
             try:
                 await country_dal.update_entry(data, continent_id, country_id)
                 return JSONResponse(
-                    status_code=200, content={"message": "Updated Country Entry"},
+                    status_code=200,
+                    content={"message": "Updated Country Entry"},
                 )
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
 
 
@@ -74,9 +81,11 @@ async def delete_entry(request: Request, country_id: int):
             try:
                 await country_dal.delete_entry(country_id)
                 return JSONResponse(
-                    status_code=200, content={"message": "Continent Entry Deleted"},
+                    status_code=200,
+                    content={"message": "Continent Entry Deleted"},
                 )
             except Exception:
                 return JSONResponse(
-                    status_code=422, content={"message": "Function Failed"},
+                    status_code=422,
+                    content={"message": "Function Failed"},
                 )
